@@ -17,7 +17,6 @@
             align-items: center;
             min-height: 100vh;
         }
-
         #app-container {
             width: 100%;
             max-width: 800px;
@@ -28,7 +27,6 @@
             text-align: center;
             margin: 20px;
         }
-
         h1, h2 {
             font-size: 26px;
             letter-spacing: 2px;
@@ -38,13 +36,11 @@
             margin-bottom: 25px;
             color: #fff;
         }
-
         p {
             line-height: 1.7;
             color: #bbb;
             text-align: justify;
         }
-
         .btn {
             background: transparent;
             border: 1px solid #555;
@@ -59,20 +55,17 @@
             width: auto;
             min-width: 200px;
         }
-
         .btn:hover {
             background: #fff;
             color: #000;
             border-color: #fff;
         }
-
         .option-btn {
             text-align: left;
             margin-bottom: 12px;
             display: block;
             width: 100%;
         }
-
         .nav-menu {
             margin-bottom: 30px;
             display: flex;
@@ -80,64 +73,53 @@
             justify-content: center;
             gap: 10px;
         }
-
         section {
             display: none;
         }
-
         section.active {
             display: block;
         }
-
         .image-container {
             margin: 20px 0;
             border: 1px solid #333;
             padding: 10px;
             background: #111;
         }
-
         .hist-img {
             max-width: 100%;
             height: auto;
             filter: sepia(30%);
             transition: filter 0.5s;
         }
-
         .hist-img:hover {
             filter: sepia(0%);
         }
-
         .timeline {
             text-align: left;
             border-left: 1px solid #444;
             padding-left: 20px;
             margin-left: 10px;
         }
-
         .timeline-item {
             margin-bottom: 15px;
             position: relative;
         }
-
         .timeline-item b {
             color: #fff;
             display: block;
         }
-
         .progress-container {
             width: 100%;
             height: 2px;
             background: #333;
             margin-bottom: 30px;
         }
-
         .progress-bar {
             height: 100%;
             background: #fff;
             width: 0%;
             transition: width 0.5s ease;
         }
-
         .score-circle {
             font-size: 50px;
             border: 2px solid #fff;
@@ -147,7 +129,6 @@
             border-radius: 50%;
             margin: 20px auto;
         }
-
         .footer-credits {
             margin-top: 40px;
             padding-top: 20px;
@@ -159,21 +140,17 @@
     </style>
 </head>
 <body>
-
 <div id="app-container" class="animate__animated animate__fadeIn">
-    
     <div class="nav-menu">
         <button class="btn" onclick="showSection('bio-section')">Биография</button>
         <button class="btn" onclick="showSection('chrono-section')">Хронология</button>
         <button class="btn" onclick="showSection('gallery-section')">Галерея</button>
         <button class="btn" onclick="showSection('start-section')">Тест</button>
     </div>
-
     <section id="bio-section" class="active animate__animated animate__fadeIn">
         <h1>Николай II Александрович</h1>
         <p>Последний Император Всероссийский (1894–1917). Старший сын императора Александра III и императрицы Марии Фёдоровны. Его правление пришлось на период резкого экономического роста России и одновременно — роста социально-политических противоречий, приведших к революциям 1905 и 1917 годов. Николай II описывался современниками как человек глубоко верующий, преданный семье, но зачастую проявлявший нерешительность в государственных делах в переломные моменты истории.</p>
     </section>
-
     <section id="chrono-section" class="animate__animated animate__fadeIn">
         <h2>Основные даты</h2>
         <div class="timeline">
@@ -186,25 +163,22 @@
             <div class="timeline-item"><b>17 июля 1918 г.</b> Расстрел царской семьи в Екатеринбурге.</div>
         </div>
     </section>
-
     <section id="gallery-section" class="animate__animated animate__fadeIn">
         <h2>Галерея образов</h2>
         <div class="image-container">
             <img src="images/1.jpg" id="gallery-img" class="hist-img" alt="История">
-            <p id="img-caption" style="text-align:center; font-size:12px;">Изображение 1</p>
+            <p id="img-caption" style="text-align:center; font-size:14px; margin-top:15px; font-weight: bold;"></p>
         </div>
         <div style="display:flex; justify-content: space-between; gap: 5px; flex-wrap: wrap;">
             <button class="btn" style="min-width:45%;" onclick="changeImg(-1)">Назад</button>
             <button class="btn" style="min-width:45%;" onclick="changeImg(1)">Вперед</button>
         </div>
     </section>
-
     <section id="start-section" class="animate__animated animate__fadeIn">
         <h1>Тестирование</h1>
         <p style="text-align:center">Проверьте свои знания о правлении Николая II.</p>
         <button class="btn" style="display:block; margin: 20px auto;" onclick="startQuiz()">Начать тест</button>
     </section>
-
     <section id="quiz-section">
         <div class="progress-container">
             <div class="progress-bar" id="progress"></div>
@@ -214,24 +188,36 @@
             <div id="options-container"></div>
         </div>
     </section>
-
     <section id="result-section">
         <h1>Ваш результат</h1>
         <div class="score-circle" id="final-score">0</div>
         <p id="result-comment" style="text-align:center"></p>
         <button class="btn" style="display:block; margin: 20px auto;" onclick="showSection('start-section')">Повторить</button>
     </section>
-
     <div class="footer-credits">
         Сайт изготовил ученик 9А класса Юминов Даниил Андреевич с помощью нейросети Gemini
     </div>
-
 </div>
-
 <script>
     let currentImgNum = 1;
+    const galleryData = {
+        1: "Парадный портрет императора Николая II",
+        2: "Семья Николая II в Царском Селе",
+        3: "Николай II на смотре войск перед отправкой на фронт",
+        4: "Императрица Александра Федоровна",
+        5: "Николай II и цесаревич Алексей",
+        6: "Встреча Николая II с крестьянами",
+        7: "Император в кругу офицеров в Ставке",
+        8: "Николай II на охоте",
+        9: "Зимний дворец в начале XX века",
+        10: "Групповое фото Романовых на праздновании 300-летия дома"
+    };
     const totalImages = 10;
-
+    function updateGallery() {
+        document.getElementById('gallery-img').src = `images/${currentImgNum}.jpg`;
+        document.getElementById('img-caption').innerText = galleryData[currentImgNum];
+    }
+    updateGallery();
     function showSection(id) {
         document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
         document.getElementById(id).classList.add('active');
@@ -240,38 +226,36 @@
             score = 0;
         }
     }
-
     function changeImg(dir) {
         currentImgNum += dir;
         if(currentImgNum > totalImages) currentImgNum = 1;
         if(currentImgNum < 1) currentImgNum = totalImages;
-        document.getElementById('gallery-img').src = `images/${currentImgNum}.jpg`;
-        document.getElementById('img-caption').innerText = `Изображение ${currentImgNum}`;
+        updateGallery();
     }
-
     const questions = [
         { q: "В каком году Николай II взошел на престол?", options: ["1881", "1894", "1896", "1905"], correct: 1 },
         { q: "Какое событие 1896 года стало трагическим началом правления?", options: ["Кровавое воскресенье", "Ходынская катастрофа", "Убийство Столыпина", "Цусимское сражение"], correct: 1 },
         { q: "Кто был автором масштабной аграрной реформы?", options: ["С.Ю. Витте", "Г.Е. Распутин", "П.А. Столыпин", "В.Н. Коковцов"], correct: 2 },
         { q: "Какое событие привело к изданию Манифеста 17 октября?", options: ["Первая мировая война", "Революция 1905-1907 гг.", "Февральская революция", "Январское восстание"], correct: 1 },
-        { q: "Где произошло подписание манифеста об отречении Николая II?", options: ["В Зимнем дворце", "В Тобольске", "На станции Дно", "В Ипатьевском доме"], correct: 2 }
+        { q: "Где произошло подписание манифеста об отречении Николая II?", options: ["В Зимнем дворце", "В Тобольске", "На станции Дно", "В Ипатьевском доме"], correct: 2 },
+        { q: "Как называлась законодательная представительная палата, созданная при Николае II?", options: ["Государственный совет", "Учредительное собрание", "Государственная Дума", "Сенат"], correct: 2 },
+        { q: "В каком городе была расстреляна царская семья?", options: ["Санкт-Петербург", "Тобольск", "Екатеринбург", "Москва"], correct: 2 },
+        { q: "Кто был наставником Николая II в юности, сторонником консервативных взглядов?", options: ["К.П. Победоносцев", "М.Т. Лорис-Меликов", "П.Н. Милюков", "А.Ф. Керенский"], correct: 0 },
+        { q: "В каком году началась Первая мировая война для России?", options: ["1912", "1913", "1914", "1915"], correct: 2 },
+        { q: "Какая страна была противником России в войне 1904-1905 гг.?", options: ["Германия", "Турция", "Япония", "Китай"], correct: 2 }
     ];
-
     let currentQ = 0;
     let score = 0;
-
     function startQuiz() {
         showSection('quiz-section');
         showQuestion();
     }
-
     function showQuestion() {
         const q = questions[currentQ];
         document.getElementById('q-text').innerText = q.q;
         const container = document.getElementById('options-container');
         container.innerHTML = '';
         document.getElementById('progress').style.width = (currentQ / questions.length) * 100 + '%';
-
         q.options.forEach((opt, i) => {
             const b = document.createElement('button');
             b.className = 'btn option-btn';
@@ -280,7 +264,6 @@
             container.appendChild(b);
         });
     }
-
     function next(idx) {
         if(idx === questions[currentQ].correct) score++;
         currentQ++;
@@ -290,14 +273,12 @@
             showResults();
         }
     }
-
     function showResults() {
         showSection('result-section');
-        document.getElementById('final-score').innerText = score;
-        let msg = score === 5 ? "Выдающиеся знания!" : (score >= 3 ? "Хороший уровень." : "Стоит повторить материал.");
+        document.getElementById('final-score').innerText = score + '/10';
+        let msg = score >= 9 ? "Выдающиеся знания!" : (score >= 6 ? "Хороший уровень." : "Стоит повторить материал.");
         document.getElementById('result-comment').innerText = msg;
     }
 </script>
-
 </body>
 </html>
